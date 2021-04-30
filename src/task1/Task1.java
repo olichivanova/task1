@@ -11,6 +11,6 @@ public class Task1 {
         list.addFront(1);
         list.showElement();
         System.out.println();
-        list.searchMax(2);
+        list.searchMax(3);
     }
 }
