@@ -11,11 +11,18 @@ public class Task2 {
         };
 
         int[][] field0 ={
-                {4, 4, 2, 2},
+                {4, 4, 3, 2},
                 {4, 2, 1, 4},
-                {4, 2, 1, 2},
-                {4, 2, 1, 2},
+                {4, 2, 3, 3},
+                {4, 3, 1, 2},
                 {4, 4, 2, 2},
+        };
+        int[][] field6 ={
+                {4, 4, 4, 4, 4},
+                {4, 2, 2, 3, 4},
+                {3, 1, 3, 1, 2},
+                {2, 4, 3, 2, 2},
+
         };
         int[][] field1 ={
                 {1, 2, 2, 3},
@@ -24,7 +31,7 @@ public class Task2 {
         };
         int[][] field2 ={
                 {2, 2, 3, 2},
-                {3, 1, 2, 4},
+                {3, 2, 2, 4},
                 {4, 3, 3, 2},
         };
 
@@ -51,7 +58,7 @@ public class Task2 {
     print(findWater(field));
         System.out.println();
         print(findWater(field0));
-        System.out.println();
+       System.out.println();
        print(findWater(field1));
         System.out.println();
         print(findWater(field2));
@@ -61,6 +68,8 @@ public class Task2 {
         print(findWater(field4));
         System.out.println();
         print(findWater(field5));
+        System.out.println();
+        print(findWater(field6));
 
 
     }
@@ -136,6 +145,7 @@ public class Task2 {
 
                         }
                         int min = Math.min(Math.min(up,down), Math.min(right,left));
+
                         if (min == field[k][z])
                         {water[k][z] = 0;
                             if (water[k][z-1]>=water[k][z])
@@ -154,10 +164,20 @@ public class Task2 {
                          else
                             water[k][z] = min;
 
-                     if ( water[k][z] < water[k-1][z] && field[k][z] < field[k-1][z])
+                            if (min < field[k][z])
+                                water[k][z] = 0;
+                     if ( water[k][z] < water[k-1][z] && field[k][z] < field[k-1][z]){
+                         if (water[k][z] == water[k-1][z])
                         water[k-1][z] = 0;
-                     if ( water[k][z] <water[k][z-1] && field[k][z] <field[k][z-1] )
-                          water[k][z-1] = 0;
+                         else
+                             water[k-1][z] = water[k][z];
+                     }
+                     if ( water[k][z] <water[k][z-1] && field[k][z] <field[k][z-1] ) {
+                         if (water[k][z] == field[k][z-1])
+                             water[k][z - 1] = 0;
+                         else
+                             water[k][z - 1] = water[k][z];
+                     }
                     }}
                 }
 
