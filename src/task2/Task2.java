@@ -3,14 +3,15 @@ package task2;
 public class Task2 {
     public static void main(String[] args) {
         int[][] field ={
-                {1, 2, 2, 3},
-                {2, 1, 1, 4},
-                {4, 5, 6, 2},
+                {2, 2, 3, 2},
+                {3, 1, 2, 3},
+                {2, 4, 3, 2},
+
 
         };
         int[][] field1 ={
                 {1, 2, 2, 3},
-                {2, 1, 0, 4},
+                {2, 1, 1, 4},
                 {4, 5, 6, 2},
 
         };
@@ -92,6 +93,9 @@ public class Task2 {
 
                         }
                         int min = Math.min(Math.min(up,down), Math.min(right,left));
+                          if(field[k][z]>=water[k][z-1] && z-1!=0 && min>field[k][z-1] )
+                            water[k][z] = 0;
+                        else
                             water[k][z] = min;
                     }}
                 }
