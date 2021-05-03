@@ -3,9 +3,10 @@ package task2;
 public class Task2 {
     public static void main(String[] args) {
         int[][] field ={
-                {2, 2, 3, 2},
-                {3, 1, 2, 3},
-                {2, 4, 3, 2},
+                {2, 3, 2, 2},
+                {2, 1, 3, 3},
+                {3, 2, 3, 2},
+                {2, 3, 2, 2},
 
 
         };
@@ -15,9 +16,17 @@ public class Task2 {
                 {4, 5, 6, 2},
 
         };
+        int[][] field2 ={
+                {2, 2, 3, 2},
+                {3, 1, 2, 4},
+                {4, 3, 3, 2},
+
+        };
       print(findWater(field));
         System.out.println();
        print(findWater(field1));
+        System.out.println();
+        print(findWater(field2));
 
 
     }
@@ -95,6 +104,8 @@ public class Task2 {
                         int min = Math.min(Math.min(up,down), Math.min(right,left));
                           if(field[k][z]>=water[k][z-1] && z-1!=0 && min>field[k][z-1] )
                             water[k][z] = 0;
+                          else if( field[k][z]>=water[k-1][z] && k-1!=0 && min>field[k-1][z])
+                              water[k][z] = 0;
                         else
                             water[k][z] = min;
                     }}
